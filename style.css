@@ -1,0 +1,695 @@
+/* ================================
+   1. Import Fonts
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Farsan&family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+/* ================================
+   2. Variables
+================================ */
+:root{
+    --blue:#f5fcff;
+    --blue-soft:#97b7fe;
+    --blue-hover:#7bcbfa;
+    --text:#2c3e50;
+    --white:#fff;
+    --shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+/* ================================
+   3. Global
+================================ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Farsan","Noto Sans Thai",cursive,sans-serif;
+    text-decoration:none;
+    transition:.2s linear;
+}
+
+html{
+    font-size:62.5%;
+    scroll-behavior:smooth;
+    scroll-padding-top:8rem;
+    overflow-x:hidden;
+}
+
+h1,h2,h3{
+    font-weight:700;
+}
+
+/* ================================
+   4. Header / Navbar (ฟ้ามินิมอล)
+================================ */
+header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    background:var(--blue-soft);
+    padding:2rem 9%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(6px);
+}
+
+header .logo{
+    font-size:3.5rem;
+    font-weight:700;
+    color:var(--text);
+}
+
+header .logo span{
+    color:var(--blue-hover);
+}
+
+header .navbar a{
+    font-size:2.3rem;
+    color:var(--text);
+    margin-left:2rem;
+}
+
+header .navbar a:hover{
+    color:var(--blue-hover);
+}
+
+header .icons a{
+    font-size:2.5rem;
+    color:var(--text);
+    margin-left:1.5rem;
+}
+
+/* ================================
+   5. Hamburger Menu
+================================ */
+#menu-btn{
+    font-size:2.5rem;
+    color:var(--text);
+    cursor:pointer;
+    display:none;
+}
+
+#toggler{
+    display:none;
+}
+
+@media (max-width:768px){
+    header{ padding:2rem; }
+
+    #menu-btn{ display:initial; }
+
+    header .navbar{
+        position:absolute;
+        top:100%; left:0; right:0;
+        background:var(--white);
+        box-shadow:var(--shadow);
+        border-top:.1rem solid rgba(0,0,0,.05);
+        clip-path:polygon(0 0,100% 0,100% 0,0 0);
+    }
+
+    #toggler:checked ~ .navbar{
+        clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+    }
+
+    header .navbar a{
+        display:block;
+        margin:1.5rem;
+        padding:1.5rem;
+        background:#f5faff;
+        border-radius:1.2rem;
+        font-size:2.2rem;
+        text-align:center;
+    }
+}
+
+/* ================================
+   6. Home Section
+================================ */
+.Home{
+    position:relative;
+    display:flex;
+    align-items:center;
+    min-height:100vh;
+    background:#f9f9f9;
+    padding:0 9%;
+    overflow:hidden;
+}
+
+.Home img{
+    position:absolute;
+    bottom:3cm;
+    right:4cm;
+    height:450px;
+    width:auto;
+    object-fit:contain;
+    z-index:1;
+}
+
+@media (max-width:1024px){
+    .Home img{
+        right:2cm;
+        bottom:2cm;
+        height:350px;
+    }
+}
+
+@media (max-width:768px){
+    .Home img{
+        right:1rem;
+        bottom:1rem;
+        height:250px;
+        opacity:.3;
+    }
+}
+
+.Home .content{
+    max-width:60rem;
+    position:relative;
+    z-index:2;
+}
+
+.Home .content h3{
+    font-size:5rem;
+    color:var(--text);
+    line-height:1.3;
+}
+
+.Home .content span{
+    font-size:2.6rem;
+    color:var(--blue-hover);
+    display:block;
+    padding:1rem 0;
+}
+
+.Home .content p{
+    font-size:1.8rem;
+    color:#555;
+    line-height:1.8;
+}
+
+.Home .content .btn{
+    display:inline-block;
+    margin-top:1rem;
+    border-radius:5rem;
+    background:var(--text);
+    color:#fff;
+    padding:1.2rem 3.5rem;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+.Home .content .btn:hover{
+    background:var(--blue-hover);
+    letter-spacing:.1rem;
+}
+
+@media (max-width:768px){
+    .Home{
+        padding:0 5%;
+    }
+
+    .Home .content h3{ font-size:4.2rem; }
+    .Home .content span{ font-size:2.4rem; }
+}
+
+/* ================================
+   About Us Custom Styles
+================================ */
+
+.about-section {
+    padding: 12rem 9% 5rem;
+    background: var(--blue);
+    min-height: 100vh;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+    margin-top: 3rem;
+}
+
+/* จัดการรูปภาพวงกลม */
+.about-image-column {
+    flex: 0 0 350px;
+}
+
+.about-image-wrapper img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--white);
+    box-shadow: var(--shadow);
+}
+
+/* จัดการเนื้อหาฝั่งขวา */
+.about-details-column {
+    flex: ;
+}
+
+.section-title {
+    text-align: left;      /* เปลี่ยนจาก center เป็น left */
+    padding: 60px 0 20px;  /* ปรับระยะห่าง (บน 60px, ซ้าย-ขวา 0, ล่าง 20px) */
+    text-transform: uppercase;
+    
+    font-size: 3rem;       
+    color: var(--text);}
+
+.developed-by-title {
+    font-size: 2.2rem;
+    color: var(--blue-soft);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.author-name {
+    font-size: 3.5rem;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.author-info {
+    font-size: 1.8rem;
+    color: #666;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+}
+
+.project-story .text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 2rem;
+}
+
+.objectives {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.objectives h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.objectives ul {
+    list-style: none;
+}
+
+.objectives ul li {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.objectives ul li span {
+    color: var(--blue-soft);
+    font-weight: bold;
+}
+
+.co-op-note {
+    font-size: 1.6rem;
+    color: #777;
+    font-style: italic;
+    border-left: 4px solid var(--blue-soft);
+    padding-left: 1.5rem;
+}
+
+.social-links {
+    margin-top: 3rem;
+}
+
+.social-link {
+    font-size: 1.8rem;
+    color: var(--white);
+    background: #1877F2; /* Facebook Blue */
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    display: inline-block;
+}
+
+/* ================================
+   Mobile Responsive (ย่อจอ)
+================================ */
+@media (max-width: 991px) {
+    .about-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-image-column {
+        flex: 0 0 auto;
+    }
+
+    .about-image-wrapper img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-details-column {
+        width: 100%;
+    }
+
+    .co-op-note {
+        border-left: none;
+        border-top: 2px solid var(--blue-soft);
+        padding-left: 0;
+        padding-top: 1.5rem;
+    }
+}
+
+/*เพจ about ของเมนู/*
+/* About Page Custom Layout */
+.about-page-container {
+    padding-top: 8rem; /* เผื่อที่ให้ Header Fixed */
+    background-color: var(--blue);
+}
+
+.about-section {
+    padding: 5rem 9%;
+}
+
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* หัวข้อ About Us ชิดซ้าย */
+.about-section .section-title {
+    text-align: left;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    color: var(--text);
+    padding: 0;
+}
+
+.about-section .section-title::after {
+    margin: 10px 0 0 0; /* เส้นใต้อยู่ซ้าย */
+}
+
+/* เนื้อหาบทนำ */
+.intro-content .text-highlight {
+    font-size: 2.2rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 2rem;
+}
+
+.intro-content .text-description {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* ส่วนวัตถุประสงค์ */
+.objectives-container {
+    margin: 5rem 0;
+    background: var(--white);
+    padding: 4rem;
+    border-radius: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.sub-heading {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: var(--blue-soft);
+}
+
+.objective-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.obj-number {
+    background: var(--blue-soft);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.objective-item p {
+    font-size: 1.8rem;
+    color: var(--text);
+}
+
+/* ส่วนผู้จัดทำ (Flexbox: รูปซ้าย ข้อความขวา) */
+.developed-by-section {
+    margin-top: 8rem;
+    padding-top: 5rem;
+    border-top: 2px solid var(--blue-soft);
+}
+
+.dev-flex-container {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+}
+
+.dev-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%; /* วงกลม */
+    object-fit: cover;
+    border: 10px solid var(--white);
+    box-shadow: var(--shadow);
+}
+
+.dev-details {
+    flex: 1;
+}
+
+.developed-by-title {
+    font-size: 2rem;
+    color: var(--blue-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.author-name {
+    font-size: 3.2rem;
+    color: var(--text);
+    margin: 0.5rem 0;
+}
+
+.author-info {
+    font-size: 1.8rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.co-op-text {
+    font-size: 1.7rem;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+.social-links {
+    margin-top: 2rem;
+}
+
+.social-link {
+    font-size: 1.8rem;
+    color: #1877F2;
+    font-weight: bold;
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .dev-flex-container {
+        flex-direction: column; /* รูปอยู่บน ข้อความอยู่ล่าง */
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .about-section .section-title {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .about-section .section-title::after {
+        margin: 10px auto 0;
+    }
+
+    .dev-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .objectives-container {
+        padding: 2.5rem;
+    }
+}
+
+.about-page {
+    min-height: 100vh;
+    padding: 120px 10%;
+    background: #f8fbff;
+    display: flex;
+    align-items: center;
+}
+
+.about-page .content {
+    max-width: 800px;
+}
+
+.about-page h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-page p {
+    font-size: 1.6rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* การจัด Layout หลัก */
+.Conversations {
+    padding: 2rem 9%;
+    background: #f9f9f9;
+}
+
+.Conversations .heading {
+    text-align: center;
+    font-size: 3rem;
+    color: #333;
+    padding-bottom: 3.5rem;
+    text-transform: uppercase;
+}
+
+.Conversations .heading span {
+    color: #27ae60; /* สีเขียวธีมการแพทย์ */
+    background: rgba(39, 174, 96, .1);
+    border-radius: .5rem;
+    padding: .2rem 1.5rem;
+}
+
+/* กล่อง Container ปรับให้ยืดหยุ่นและเท่ากัน */
+.Conversations .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+}
+
+/* ตกแต่งกล่องหมวดหมู่ (กรอบโค้งเว้า) */
+.Conversations .box-container .box {
+    background: #fff;
+    border: .1rem solid rgba(0,0,0,.1);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 30px 5px 30px 5px; /* โค้งเว้าแบบเฉียงสวยงาม */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.05);
+    transition: all .3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Conversations .box-container .box:hover {
+    transform: translateY(-1rem);
+    border-color: #6600ff;
+}
+
+/* ปรับรูปภาพให้เป็นวงกลม */
+.Conversations .box .image-wrapper {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    overflow: hidden;
+    margin: 0 auto 2rem;
+    border: 5px solid #f0f0f0;
+}
+
+.Conversations .box .image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* ให้ภาพพอดีวงกลม */
+}
+
+/* หัวข้อหมวดหมู่ */
+.Conversations .box h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* ปุ่ม Start Learning */
+.Conversations .box .btn {
+    display: inline-block;
+    background: #8000ff;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background .3s linear;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Conversations .box .btn:hover {
+    background: #333;
+    letter-spacing: .1rem;
+}
+
+/* เพิ่มส่วนนี้ใน style.css */
+.conversation-page {
+    padding-top: 10rem; /* ปรับตัวเลขนี้ตามความสูงของ Header คุณ */
+    min-height: 100vh;
+}
+
+.Conversations .heading {
+    text-align: center;
+    font-size: 3.5rem;
+    color: #333;
+    padding: 2rem 0; /* เพิ่มช่องว่างรอบๆ หัวข้อ */
+    margin-bottom: 3rem;
+    display: block; /* มั่นใจว่าไม่ใช่ hidden */
+    visibility: visible;
+}
+
+.Conversations .heading span {
+    color: #2116f8;
+    background: rgba(122, 169, 240, 0.1);
+    border-radius: .5rem;
+    padding: .2rem 1.5rem;
+}
+
+
+
+
+
+/* สั่งซ่อนไอคอน User โดยไม่กระทบโครงสร้างส่วนอื่น */
+header .icons a.fa-user {
+    display: none;
+}
+
+

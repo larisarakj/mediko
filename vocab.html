@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ตกแต่งเพิ่มเติมเฉพาะหน้า Vocabulary */
+        :root {
+            --primary-blue: #2196f3;
+            --light-bg: #f9f9f9;
+        }
+
+        body {
+            background: var(--light-bg);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .vocab-section {
+            padding: 12rem 7% 5rem; /* เผื่อที่ให้ Header fixed */
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 3.5rem;
+            color: #333;
+            padding: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .heading span {
+            color: var(--primary-blue);
+        }
+
+        .vocab-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.05);
+            overflow: hidden;
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        .category-card h3 {
+            background: #fff;
+            padding: 1.5rem;
+            font-size: 1.4rem;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-card h3 i {
+            color: var(--primary-blue);
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .vocab-table tr td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .vocab-table tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        .jp-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .kanji {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .kana {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+        }
+
+        .romaji {
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .thai-col {
+            font-size: 1.1rem;
+            color: #444;
+            text-align: right;
+            font-weight: 400;
+        }
+
+        /* สำหรับสีพิเศษแต่ละแผนก (Optional) */
+        .card-neuro { border-top-color: #6c5ce7; }
+        .card-respi { border-top-color: #d63031; }
+        .card-skin  { border-top-color: #e84393; }
+
+        @media (max-width: 768px) {
+            .vocab-section { padding-top: 10rem; }
+            .heading { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html">Conversations</a>
+        <a href="vocab.html" class="active">Vocabulary</a>
+        <a href="index.html#Test">Test</a>
+        <a href="index.html#Review">Review</a>
+    </nav>
+
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+<style>
+    /* --- ปรับปรุงโครงสร้าง Grid ให้เป็น 2 คอลัมน์ และ 1 คอลัมน์บนมือถือ --- */
+    .vocab-container {
+        display: grid;
+        /* Desktop: 2 คอลัมน์เท่ากัน */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2.5rem;
+        align-items: flex-start;
+    }
+
+    /* --- ขยายขนาดตัวหนังสือให้ใหญ่ขึ้น --- */
+    .kanji {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 1.5rem; /* ขยายขนาดคันจิ */
+        font-weight: 700;
+        color: #222;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .kana {
+        font-size: 1.1rem; /* ขยายคำอ่าน */
+        color: var(--primary-blue);
+        display: block;
+        font-weight: 400;
+    }
+
+    .romaji {
+        font-size: 0.9rem;
+        color: #999;
+        font-style: italic;
+        display: block;
+    }
+
+    .thai-col {
+        font-size: 1.3rem; /* ขยายคำแปลไทย */
+        color: #333;
+        text-align: right;
+        font-weight: 500;
+        width: 40%; /* ล็อกความกว้างฝั่งภาษาไทย */
+    }
+
+    .category-card h3 {
+        font-size: 1.6rem; /* ขยายหัวข้อแผนก */
+        padding: 1.8rem;
+        background: #fcfcfc;
+    }
+
+    .vocab-table td {
+        padding: 1.5rem; /* เพิ่มช่องว่างให้ดูไม่อึดอัด */
+    }
+
+    /* --- Responsive: Tablet & Mobile --- */
+    @media (max-width: 1024px) {
+        .vocab-container {
+            grid-template-columns: 1fr; /* กล่องเดียวพอสำหรับมือถือ/แท็บเล็ต */
+            gap: 1.5rem;
+        }
+        
+        .heading {
+            font-size: 2.8rem;
+        }
+        
+        .kanji {
+            font-size: 1.3rem;
+        }
+
+        .thai-col {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2196f3;
+            --bg-body: #f0f2f5;
+        }
+
+        body {
+            background: var(--bg-body);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .vocab-section {
+            padding: 10rem 5% 5rem;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 4rem; /* ใหญ่พิเศษ */
+            margin-bottom: 4rem;
+            color: #333;
+        }
+
+        .heading span { color: var(--primary-blue); }
+
+        /* การจัด Grid: Desktop 2 คอลัมน์ / Mobile 1 คอลัมน์ */
+        .vocab-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-top: 8px solid var(--primary-blue);
+            height: fit-content;
+        }
+
+        .category-card h3 {
+            background: #fff;
+            padding: 2.5rem;
+            font-size: 2.2rem; /* หัวข้อใหญ่ชัดเจน */
+            color: #333;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .vocab-table td {
+            padding: 2rem; /* เพิ่มพื้นที่ */
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        /* ปรับขนาดตัวอักษรด้านใน */
+        .kanji {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2.4rem; /* คันจิใหญ่มาก */
+            font-weight: 700;
+            color: #000;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .kana {
+            font-size: 1.6rem; /* ฮิรางานะใหญ่ขึ้น */
+            color: var(--primary-blue);
+            display: block;
+            font-weight: 600;
+        }
+
+        .romaji {
+            font-size: 1.3rem; /* โรมันจิขยายใหญ่และหนาขึ้น */
+            color: #555;
+            font-style: italic;
+            font-weight: 600; 
+            display: block;
+            margin-top: 5px;
+            background: #fdfdfd;
+        }
+
+        .thai-col {
+            font-size: 2rem; /* คำแปลไทยใหญ่ชัดเจน */
+            color: #2c3e50;
+            text-align: right;
+            font-weight: 600;
+            padding-left: 20px;
+        }
+
+        /* สีพิเศษแยกแผนก */
+        .card-neuro { border-top-color: #6c5ce7; } .card-neuro h3 i { color: #6c5ce7; }
+        .card-respi { border-top-color: #d63031; } .card-respi h3 i { color: #d63031; }
+        .card-skin { border-top-color: #e84393; } .card-skin h3 i { color: #e84393; }
+        .card-bone { border-top-color: #e67e22; } .card-bone h3 i { color: #e67e22; }
+        .card-obgyn { border-top-color: #ff78b0; } .card-obgyn h3 i { color: #ff78b0; }
+        .card-stomach { border-top-color: #27ae60; } .card-stomach h3 i { color: #27ae60; }
+
+        /* Responsive: เมื่อเป็นมือถือหรือแท็บเล็ตเหลือ 1 กล่อง */
+        @media (max-width: 1100px) {
+            .vocab-container { grid-template-columns: 1fr; }
+            .vocab-section { padding-top: 12rem; }
+            .kanji { font-size: 2rem; }
+            .thai-col { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html">Conversations</a>
+        <a href="vocab.html" class="active">Vocabulary</a>
+        <a href="test.html">Test</a>
+        <a href="review.html">Review</a>
+    </nav>
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+<section class="vocab-section">
+    <h1 class="heading">Medical <span>Vocabulary</span></h1>
+
+    <div class="vocab-container">
+
+        <div class="category-card">
+            <h3><i class="fas fa-stethoscope"></i> อายุรกรรม</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">風邪</span><span class="kana">かぜ</span><span class="romaji">kaze</span></td><td class="thai-col">หวัด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">鼻水</span><span class="kana">はなみず</span><span class="romaji">hanamizu</span></td><td class="thai-col">น้ำมูก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">咳</span><span class="kana">せき</span><span class="romaji">seki</span></td><td class="thai-col">ไอ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">くしゃみ</span><span class="kana">くしゃみ</span><span class="romaji">kushami</span></td><td class="thai-col">จาม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">痰</span><span class="kana">たん</span><span class="romaji">tan</span></td><td class="thai-col">เสมหะ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">声がかれる</span><span class="kana">こえがかれる</span><span class="romaji">koe ga kareru</span></td><td class="thai-col">เสียงแหบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">めまい</span><span class="kana">めまい</span><span class="romaji">memai</span></td><td class="thai-col">เวียนหัว</td></tr>
+                <tr><td class="jp-col"><span class="kanji">頭痛</span><span class="kana">ずつう</span><span class="romaji">zutsuu</span></td><td class="thai-col">ปวดหัว</td></tr>
+                <tr><td class="jp-col"><span class="kanji">吐き気</span><span class="kana">はきけ</span><span class="romaji">hakike</span></td><td class="thai-col">คลื่นไส้</td></tr>
+                <tr><td class="jp-col"><span class="kanji">嘔吐</span><span class="kana">おうと</span><span class="romaji">outo</span></td><td class="thai-col">อาเจียน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">下痢</span><span class="kana">げり</span><span class="romaji">geri</span></td><td class="thai-col">ท้องเสีย</td></tr>
+                <tr><td class="jp-col"><span class="kanji">発熱</span><span class="kana">はつねつ</span><span class="romaji">hatsunetsu</span></td><td class="thai-col">ไข้</td></tr>
+                <tr><td class="jp-col"><span class="kanji">高熱</span><span class="kana">こうねつ</span><span class="romaji">kounetsu</span></td><td class="thai-col">ไข้สูง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">だるさ</span><span class="kana">だるさ</span><span class="romaji">darusa</span></td><td class="thai-col">อ่อนเพลีย</td></tr>
+                <tr><td class="jp-col"><span class="kanji">倦怠感</span><span class="kana">けんたいかん</span><span class="romaji">kentaikan</span></td><td class="thai-col">อ่อนเพลียมาก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">眠れない</span><span class="kana">ねむれない</span><span class="romaji">nemurenai</span></td><td class="thai-col">นอนไม่หลับ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">しびれ</span><span class="kana">しびれ</span><span class="romaji">shibire</span></td><td class="thai-col">ชา</td></tr>
+                <tr><td class="jp-col"><span class="kanji">再発</span><span class="kana">さいはつ</span><span class="romaji">saihatsu</span></td><td class="thai-col">กำเริบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">悪寒</span><span class="kana">あっかん</span><span class="romaji">akkan</span></td><td class="thai-col">หนาวสั่น</td></tr>
+                <tr><td class="jp-col"><span class="kanji">食欲不振</span><span class="kana">しょくよくふしん</span><span class="romaji">shokuyoku fushin</span></td><td class="thai-col">เบื่ออาหาร</td></tr>
+                <tr><td class="jp-col"><span class="kanji">体重減少</span><span class="kana">たいじゅうげんしょう</span><span class="romaji">taijuu genshou</span></td><td class="thai-col">น้ำหนักลด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">発汗</span><span class="kana">はっかん</span><span class="romaji">hakkan</span></td><td class="thai-col">เหงื่อออกมาก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">むくみ</span><span class="kana">むくみ</span><span class="romaji">mukumi</span></td><td class="thai-col">บวมน้ำ</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-respi">
+            <h3><i class="fas fa-heartbeat"></i> หายใจ / หัวใจ / ฉุกเฉิน</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">肺炎</span><span class="kana">はいえん</span><span class="romaji">haien</span></td><td class="thai-col">ปอดอักเสบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">胸の痛み</span><span class="kana">むねのいたみ</span><span class="romaji">mune no itami</span></td><td class="thai-col">เจ็บหน้าอก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">胸の圧迫感</span><span class="kana">むねのあっぱくかん</span><span class="romaji">mune no appakukan</span></td><td class="thai-col">แน่นหน้าอก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">動悸</span><span class="kana">どうき</span><span class="romaji">douki</span></td><td class="thai-col">ใจสั่น</td></tr>
+                <tr><td class="jp-col"><span class="kanji">心臓</span><span class="kana">しんぞう</span><span class="romaji">shinzou</span></td><td class="thai-col">หัวใจ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">締め付けられる痛み</span><span class="kana">しめつけられるいたみ</span><span class="romaji">shimetsukerareru itami</span></td><td class="thai-col">เจ็บเหมือนถูกบีบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">息苦しい</span><span class="kana">いきぐるしい</span><span class="romaji">ikigurushii</span></td><td class="thai-col">หายใจลำบาก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">血圧</span><span class="kana">けつあつ</span><span class="romaji">ketsuatsu</span></td><td class="thai-col">ความดัน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">痛風</span><span class="kana">つうふう</span><span class="romaji">tsuufuu</span></td><td class="thai-col">เกาต์</td></tr>
+                <tr><td class="jp-col"><span class="kanji">失神</span><span class="kana">しっしん</span><span class="romaji">shisshin</span></td><td class="thai-col">เป็นลมหมดสติ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">胸焼け</span><span class="kana">むねやけ</span><span class="romaji">muneyake</span></td><td class="thai-col">แสบร้อนหน้าอก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">不整脈</span><span class="kana">ふせいみゃく</span><span class="romaji">fuseimyaku</span></td><td class="thai-col">หัวใจเต้นผิดจังหวะ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">呼吸困難</span><span class="kana">こきゅうこんなん</span><span class="romaji">kokyuu konnan</span></td><td class="thai-col">หายใจลำบากรุนแรง</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro">
+            <h3><i class="fas fa-brain"></i> ระบบประสาท</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">頭が重い</span><span class="kana">あたまがおもい</span><span class="romaji">atama ga omoi</span></td><td class="thai-col">หนักหัว</td></tr>
+                <tr><td class="jp-col"><span class="kanji">意識がもうろう</span><span class="kana">いしきがもうろう</span><span class="romaji">ishiki ga mourou</span></td><td class="thai-col">มึนงง สติไม่ชัด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">手足の麻痺</span><span class="kana">てあしのまひ</span><span class="romaji">teashi no mahi</span></td><td class="thai-col">แขนขาอ่อนแรง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">けいれん</span><span class="kana">けいれん</span><span class="romaji">keiren</span></td><td class="thai-col">ชัก</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro" style="border-top-color: #f39c12;">
+            <h3><i class="fas fa-ear"></i> หู คอ จมูก</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">喉の痛み</span><span class="kana">のどのいたみ</span><span class="romaji">nodo no itami</span></td><td class="thai-col">เจ็บคอ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">鼻血</span><span class="kana">はなぢ</span><span class="romaji">hanaji</span></td><td class="thai-col">เลือดกำเดา</td></tr>
+                <tr><td class="jp-col"><span class="kanji">しこり</span><span class="kana">しこり</span><span class="romaji">shikori</span></td><td class="thai-col">ก้อน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">副鼻腔炎</span><span class="kana">ふくびくうえん</span><span class="romaji">fukubikuuen</span></td><td class="thai-col">ไซนัสอักเสบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">耳の痛み</span><span class="kana">みみのいたみ</span><span class="romaji">mimi no itami</span></td><td class="thai-col">ปวดหู</td></tr>
+                <tr><td class="jp-col"><span class="kanji">耳詰まり</span><span class="kana">みみづまり</span><span class="romaji">mimidzumari</span></td><td class="thai-col">หูอื้อ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">聞こえにくい</span><span class="kana">きこえにくい</span><span class="romaji">kikoenikui</span></td><td class="thai-col">ได้ยินไม่ชัด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">ふらつき</span><span class="kana">ふらつき</span><span class="romaji">furatsuki</span></td><td class="thai-col">โคลงเคลง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">耳鳴り</span><span class="kana">みみなり</span><span class="romaji">miminari</span></td><td class="thai-col">เสียงดังในหู</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro" style="border-top-color: #1abc9c;">
+            <h3><i class="fas fa-eye"></i> ตา</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">光がちらつく</span><span class="kana">ひかりがちらつく</span><span class="romaji">hikari ga chiratsuku</span></td><td class="thai-col">เห็นแสงแวบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">まぶたの腫れ</span><span class="kana">まぶたのはれ</span><span class="romaji">mabuta no hare</span></td><td class="thai-col">เปลือกตาบวม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">ものもらい</span><span class="kana">ものもらい</span><span class="romaji">monomorai</span></td><td class="thai-col">ตากุ้งยิง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">目の痛み</span><span class="kana">めのいたみ</span><span class="romaji">me no itami</span></td><td class="thai-col">ปวดตา</td></tr>
+                <tr><td class="jp-col"><span class="kanji">目のかゆみ</span><span class="kana">めのかゆみ</span><span class="romaji">me no kayumi</span></td><td class="thai-col">คันตา</td></tr>
+                <tr><td class="jp-col"><span class="kanji">目やに</span><span class="kana">めやに</span><span class="romaji">meyani</span></td><td class="thai-col">ขี้ตา</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-skin">
+            <h3><i class="fas fa-hand-sparkles"></i> ผิวหนัง</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">にきび</span><span class="kana">にきび</span><span class="romaji">nikibi</span></td><td class="thai-col">สิว</td></tr>
+                <tr><td class="jp-col"><span class="kanji">発疹</span><span class="kana">ほっしん</span><span class="romaji">hosshin</span></td><td class="thai-col">ผื่น</td></tr>
+                <tr><td class="jp-col"><span class="kanji">赤み</span><span class="kana">あかみ</span><span class="romaji">akami</span></td><td class="thai-col">รอยแดง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">かゆみ</span><span class="kana">かゆみ</span><span class="romaji">kayumi</span></td><td class="thai-col">อาการคัน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">いぼ</span><span class="kana">いぼ</span><span class="romaji">ibo</span></td><td class="thai-col">หูด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">ぶつぶつ</span><span class="kana">ぶつぶつ</span><span class="romaji">butsubutsu</span></td><td class="thai-col">ตุ่ม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">水虫</span><span class="kana">みずむし</span><span class="romaji">mizumushi</span></td><td class="thai-col">น้ำกัดเท้า</td></tr>
+                <tr><td class="jp-col"><span class="kanji">ひび割れ</span><span class="kana">ひびわれ</span><span class="romaji">hibiware</span></td><td class="thai-col">ผิวแตก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">じんましん</span><span class="kana">じんましん</span><span class="romaji">jinmashin</span></td><td class="thai-col">ลมพิษ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">水ぶくれ</span><span class="kana">みずぶくれ</span><span class="romaji">mizubukure</span></td><td class="thai-col">ตุ่มน้ำ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">乾燥</span><span class="kana">かんそう</span><span class="romaji">kansou</span></td><td class="thai-col">ผิวแห้ง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">色素沈着</span><span class="kana">しきそちんちゃく</span><span class="romaji">shikiso chinchaku</span></td><td class="thai-col">รอยคล้ำ</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-bone">
+            <h3><i class="fas fa-bone"></i> ศัลยกรรมกระดูก</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">腫れ</span><span class="kana">はれ</span><span class="romaji">hare</span></td><td class="thai-col">บวม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">捻挫</span><span class="kana">ねんざ</span><span class="romaji">nenza</span></td><td class="thai-col">ข้อแพลง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">あざ</span><span class="kana">あざ</span><span class="romaji">aza</span></td><td class="thai-col">รอยช้ำ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">擦り傷</span><span class="kana">すりきず</span><span class="romaji">surikizu</span></td><td class="thai-col">แผลถลอก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">転倒</span><span class="kana">てんとう</span><span class="romaji">tentou</span></td><td class="thai-col">ล้ม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">打撲</span><span class="kana">だぼく</span><span class="romaji">daboku</span></td><td class="thai-col">ฟกช้ำ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">肋骨</span><span class="kana">ろっこつ</span><span class="romaji">rokkotsu</span></td><td class="thai-col">ซี่โครง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">腰痛</span><span class="kana">ようつう</span><span class="romaji">youtsuu</span></td><td class="thai-col">ปวดหลัง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">リウマチ</span><span class="kana">りうまち</span><span class="romaji">riumachi</span></td><td class="thai-col">รูมาตอยด์</td></tr>
+                <tr><td class="jp-col"><span class="kanji">水が溜まる</span><span class="kana">みずがたまる</span><span class="romaji">mizu ga tamaru</span></td><td class="thai-col">มีน้ำคั่ง</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro" style="border-top-color: #34495e;">
+            <h3><i class="fas fa-tooth"></i> ทันตกรรม</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">虫歯</span><span class="kana">むしば</span><span class="romaji">mushiba</span></td><td class="thai-col">ฟันผุ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">歯の痛み</span><span class="kana">はのいたみ</span><span class="romaji">ha no itami</span></td><td class="thai-col">ปวดฟัน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">歯ぐきの腫れ</span><span class="kana">はぐきのはれ</span><span class="romaji">haguki no hare</span></td><td class="thai-col">เหงือกบวม</td></tr>
+                <tr><td class="jp-col"><span class="kanji">口内のできもの</span><span class="kana">こうないのできもの</span><span class="romaji">kounai dekimono</span></td><td class="thai-col">แผลในปาก</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-obgyn">
+            <h3><i class="fas fa-venus"></i> สูตินรีเวช</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">生理不順</span><span class="kana">せいりふじゅん</span><span class="romaji">seiri fujun</span></td><td class="thai-col">ประจำเดือนผิดปกติ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">無月経</span><span class="kana">むげっけい</span><span class="romaji">mugekkei</span></td><td class="thai-col">ขาดประจำเดือน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">陰部痛</span><span class="kana">いんぶつう</span><span class="romaji">inbutsuu</span></td><td class="thai-col">ปวดอวัยวะเพศ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">陰部のしこり</span><span class="kana">いんぶのしこり</span><span class="romaji">inbu no shikori</span></td><td class="thai-col">ก้อนที่อวัยวะเพศ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">おりもの異常</span><span class="kana">おりものいじょう</span><span class="romaji">orimono ijou</span></td><td class="thai-col">ตกขาวผิดปกติ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">不正出血</span><span class="kana">ふせいしゅっけつ</span><span class="romaji">fusei shukketsu</span></td><td class="thai-col">เลือดออกผิดปกติ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">下腹部痛</span><span class="kana">かふくぶつう</span><span class="romaji">kafukubutsuu</span></td><td class="thai-col">ปวดท้องน้อย</td></tr>
+                <tr><td class="jp-col"><span class="kanji">妊娠の可能性</span><span class="kana">にんしんのかのうせい</span><span class="romaji">ninshin no kanousei</span></td><td class="thai-col">สงสัยตั้งครรภ์</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro" style="border-top-color: #bffb27;">
+            <h3><i class="fas fa-restroom"></i> ระบบทางเดินปัสสาวะ</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">排尿時痛</span><span class="kana">はいにょうじつう</span><span class="romaji">hainyoujitsuu</span></td><td class="thai-col">เจ็บตอนปัสสาวะ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">膿</span><span class="kana">のう</span><span class="romaji">nou</span></td><td class="thai-col">หนอง</td></tr>
+                <tr><td class="jp-col"><span class="kanji">尿閉</span><span class="kana">にょうへい</span><span class="romaji">nyouhei</span></td><td class="thai-col">ปัสสาวะไม่ออก</td></tr>
+                <tr><td class="jp-col"><span class="kanji">尿混濁</span><span class="kana">にょうこんだく</span><span class="romaji">nyou kondaku</span></td><td class="thai-col">ปัสสาวะขุ่น</td></tr>
+                <tr><td class="jp-col"><span class="kanji">頻尿</span><span class="kana">ひんにょう</span><span class="romaji">hinnnyou</span></td><td class="thai-col">ปัสสาวะบ่อย</td></tr>
+                <tr><td class="jp-col"><span class="kanji">血尿</span><span class="kana">けつにょう</span><span class="romaji">ketsunyou</span></td><td class="thai-col">ปัสสาวะเป็นเลือด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">残尿感</span><span class="kana">ざんにょうかん</span><span class="romaji">zannyoukan</span></td><td class="thai-col">ปัสสาวะไม่สุด</td></tr>
+            </table>
+        </div>
+
+        <div class="category-card card-neuro" style="border-top-color: #c0392b;">
+            <h3><i class="fas fa-biohazard"></i> การติดเชื้อ / อุบัติเหตุ</h3>
+            <table class="vocab-table">
+                <tr><td class="jp-col"><span class="kanji">狂犬病</span><span class="kana">きょうけんびょう</span><span class="romaji">kyoukenbyou</span></td><td class="thai-col">พิษสุนัขบ้า</td></tr>
+                <tr><td class="jp-col"><span class="kanji">咬傷</span><span class="kana">こうしょう</span><span class="romaji">koushou</span></td><td class="thai-col">แผลถูกกัด</td></tr>
+                <tr><td class="jp-col"><span class="kanji">引っかき傷</span><span class="kana">ひっかききず</span><span class="romaji">hikkakikizu</span></td><td class="thai-col">แผลแมวข่วน</td></tr>
+                <tr><td class="jp-col"><span class="kanji">陥入爪</span><span class="kana">かんにゅうそう</span><span class="romaji">kannyūsou</span></td><td class="thai-col">เล็บขบ</td></tr>
+                <tr><td class="jp-col"><span class="kanji">性感染症</span><span class="kana">せいかんせんしょう</span><span class="romaji">seikansenshou</span></td><td class="thai-col">โรคติดต่อทางเพศสัมพันธ์</td></tr>
+                <tr><td class="jp-col"><span class="kanji">肝機能異常</span><span class="kana">かんきのういじょう</span><span class="romaji">kankinou ijou</span></td><td class="thai-col">ค่าตับผิดปกติ</td></tr>
+            </table>
+        </div>
+
+       
+
+
+
+
+<div class="category-card card-docs" style="border-top-color: #e9f677; width: 100%; box-sizing: border-box;">
+    <h3><i class="fas fa-file-medical"></i> เอกสาร / Documents</h3>
+    
+    <table class="vocab-table" style="width: 100%;">
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">病院カード</span>
+                <span class="kana">びょういんカード</span>
+                <span class="romaji">byōin kādo</span>
+            </td>
+            <td class="thai-col">บัตรโรงพยาบาล</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">保険</span>
+                <span class="kana">ほけん</span>
+                <span class="romaji">hoken</span>
+            </td>
+            <td class="thai-col">ประกัน</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">パスポート</span>
+                <span class="kana">パスポート</span>
+                <span class="romaji">pasupōto</span>
+            </td>
+            <td class="thai-col">พาสสปอร์ต</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">出生証明書</span>
+                <span class="kana">しゅっせいしょうめいしょ</span>
+                <span class="romaji">shussei shōmeisho</span>
+            </td>
+            <td class="thai-col">ใบรับรองการเกิด</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">診断書</span>
+                <span class="kana">しんだんしょ</span>
+                <span class="romaji">shindan sho</span>
+            </td>
+            <td class="thai-col">ใบรับรองแพทย์</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">領収書</span>
+                <span class="kana">りょうしゅうしょ</span>
+                <span class="romaji">ryōshūsho</span>
+            </td>
+            <td class="thai-col">ใบเสร็จรับเงิน</td>
+        </tr>
+        <tr>
+            <td class="jp-col">
+                <span class="kanji">請求書</span>
+                <span class="kana">せいきゅうしょ</span>
+                <span class="romaji">seikyūsho</span>
+            </td>
+            <td class="thai-col">ใบแจ้งหนี้ / บิล</td>
+        </tr>
+    </table>
+</div>
+
+
+    
+
+        <div class="category-card" style="border-top-color: #f77307;">
+            <h3><i class="fas fa-hospital-user"></i> แผนกเฉพาะทาง</h3>
+            <div class="vocab-grid">
+                <table class="vocab-table">
+                    <tr><td class="jp-col"><span class="kanji">皮膚科</span><span class="kana">ひふか</span><span class="romaji">hifuka</span></td><td class="thai-col">ผิวหนัง</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">整形外科</span><span class="kana">せいけいげか</span><span class="romaji">seikei geka</span></td><td class="thai-col">กระดูกและข้อ</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">消化器科</span><span class="kana">しょうかきか</span><span class="romaji">shōkakika</span></td><td class="thai-col">ทางเดินอาหาร</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">呼吸器科</span><span class="kana">こきゅうきか</span><span class="romaji">kokyūkika</span></td><td class="thai-col">ทางเดินหายใจ</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">内科</span><span class="kana">ないか</span><span class="romaji">naika</span></td><td class="thai-col">อายุรกรรม</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">眼科</span><span class="kana">がんか</span><span class="romaji">ganka</span></td><td class="thai-col">จักษุ</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">歯科</span><span class="kana">しか</span><span class="romaji">shika</span></td><td class="thai-col">ทันตกรรม</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">小児科</span><span class="kana">しょうにか</span><span class="romaji">shōnika</span></td><td class="thai-col">แผนกเด็ก</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">産婦人科</span><span class="kana">さんふじんか</span><span class="romaji">sanfujinka</span></td><td class="thai-col">สูตินรีเวช</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">循環器科</span><span class="kana">じゅんかんきか</span><span class="romaji">junkankika</span></td><td class="thai-col">หัวใจ</td></tr>
+                </table>
+                <table class="vocab-table">
+                    <tr><td class="jp-col"><span class="kanji">耳鼻咽喉科</span><span class="kana">じびいんこうか</span><span class="romaji">jibīnkōka</span></td><td class="thai-col">หู คอ จมูก</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">外科</span><span class="kana">げか</span><span class="romaji">geka</span></td><td class="thai-col">ศัลยกรรม</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">救急科</span><span class="kana">きゅうきゅうか</span><span class="romaji">kyūkyūka</span></td><td class="thai-col">แผนกฉุกเฉิน</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">精神科</span><span class="kana">せいしんか</span><span class="romaji">seishinka</span></td><td class="thai-col">แผนกจิตเวช</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">リハビリ科</span><span class="kana">リハビリか</span><span class="romaji">rihabirika</span></td><td class="thai-col">กายภาพบำบัด</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">薬局</span><span class="kana">やっきょく</span><span class="romaji">yakkyoku</span></td><td class="thai-col">ห้องยา</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">会計</span><span class="kana">かいけい</span><span class="romaji">kaikei</span></td><td class="thai-col">แผนกการเงิน</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">日本人SC</span><span class="kana">にほんじんサービス...</span><span class="romaji">nihonjin sābisu...</span></td><td class="thai-col">ศูนย์คนญี่ปุ่น</td></tr>
+                    <tr><td class="jp-col"><span class="kanji">受付</span><span class="kana">うけつけ</span><span class="romaji">uketsuke</span></td><td class="thai-col">เคาน์เตอร์ลงทะเบียน</td></tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+        <div class="category-card" style="border-top-color: #e13ce7; width: 100%; box-sizing: border-box;">
+    <h3><i class="fas fa-virus"></i> โรค</h3>
+    <table class="vocab-table" style="width: 100%;">
+        <tr><td class="jp-col"><span class="kanji">糖尿病</span><span class="kana">とうにょうびょう</span><span class="romaji">tōnyōbyō</span></td><td class="thai-col">เบาหวาน</td></tr>
+        <tr><td class="jp-col"><span class="kanji">高血圧症</span><span class="kana">こうけつあつしょう</span><span class="romaji">kōketsuatsu shō</span></td><td class="thai-col">ความดันสูง</td></tr>
+        <tr><td class="jp-col"><span class="kanji">心臓病</span><span class="kana">しんぞうびょう</span><span class="romaji">shinzōbyō</span></td><td class="thai-col">โรคหัวใจ</td></tr>
+        <tr><td class="jp-col"><span class="kanji">インフルエンザ</span><span class="kana">インフルエンザ</span><span class="romaji">infuruenza</span></td><td class="thai-col">ไข้หวัดใหญ่</td></tr>
+        <tr><td class="jp-col"><span class="kanji">結核</span><span class="kana">けっかく</span><span class="romaji">kekkaku</span></td><td class="thai-col">วัณโรค</td></tr>
+        <tr><td class="jp-col"><span class="kanji">胃炎</span><span class="kana">いえん</span><span class="romaji">ien</span></td><td class="thai-col">กระเพาะอักเสบ</td></tr>
+        <tr><td class="jp-col"><span class="kanji">逆流性食道炎</span><span class="kana">ぎゃくりゅうせいしょくどうえん</span><span class="romaji">gyakuryūsei shokudōen</span></td><td class="thai-col">กรดไหลย้อน</td></tr>
+        <tr><td class="jp-col"><span class="kanji">アレルギー</span><span class="kana">アレルギー</span><span class="romaji">arerugī</span></td><td class="thai-col">ภูมิแพ้</td></tr>
+        <tr><td class="jp-col"><span class="kanji">うつ病</span><span class="kana">うつびょう</span><span class="romaji">utsubyō</span></td><td class="thai-col">โรคซึมเศร้า</td></tr>
+        <tr><td class="jp-col"><span class="kanji">狂犬病</span><span class="kana">きょうけんびょう</span><span class="romaji">kyōkenbyō</span></td><td class="thai-col">โรคพิษสุนัขบ้า</td></tr>
+        <tr><td class="jp-col"><span class="kanji">痛風</span><span class="kana">つうふう</span><span class="romaji">tsūfū</span></td><td class="thai-col">เกาต์</td></tr>
+        <tr><td class="jp-col"><span class="kanji">緑内障</span><span class="kana">りょくないしょう</span><span class="romaji">ryokunaishō</span></td><td class="thai-col">ต้อหิน</td></tr>
+        <tr><td class="jp-col"><span class="kanji">白内障</span><span class="kana">はくないしょう</span><span class="romaji">hakunaishō</span></td><td class="thai-col">ต้อกระจก</td></tr>
+        <tr><td class="jp-col"><span class="kanji">肺炎</span><span class="kana">はいえん</span><span class="romaji">haien</span></td><td class="thai-col">ปอดอักเสบ</td></tr>
+        <tr><td class="jp-col"><span class="kanji">盲腸</span><span class="kana">もうちょう</span><span class="romaji">mōchō</span></td><td class="thai-col">ไส้ติ่ง</td></tr>
+        <tr><td class="jp-col"><span class="kanji">骨折</span><span class="kana">こっせつ</span><span class="romaji">kossetsu</span></td><td class="thai-col">กระดูกหัก</td></tr>
+        <tr><td class="jp-col"><span class="kanji">捻挫</span><span class="kana">ねんざ</span><span class="romaji">nenza</span></td><td class="thai-col">ข้อแพลง</td></tr>
+        <tr><td class="jp-col"><span class="kanji">脳卒中</span><span class="kana">のうそっちゅう</span><span class="romaji">nōsocchū</span></td><td class="thai-col">หลอดเลือดสมอง</td></tr>
+        <tr><td class="jp-col"><span class="kanji">貧血</span><span class="kana">ひんけつ</span><span class="romaji">hinketsu</span></td><td class="thai-col">โลหิตจาง</td></tr>
+        <tr><td class="jp-col"><span class="kanji">不眠症</span><span class="kana">ふみんしょう</span><span class="romaji">fuminshō</span></td><td class="thai-col">นอนไม่หลับ</td></tr>
+    </table>
+</div>

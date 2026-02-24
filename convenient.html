@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&family=Noto+Sans+Thai:wght@100..900&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --pink-staff: #ff85a2;
+            --green-patient: #2ecc71;
+            --blue-accent: #3498db;
+            --gold-special: #f1c40f;
+            --bg-light: #f0f4f8;
+        }
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1.category-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #c9cffd;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2.sub-category {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 50px 0 25px 0;
+            padding-left: 20px;
+            border-left: 10px solid var(--blue-accent);
+            letter-spacing: 1px;
+        }
+
+        .conversation-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .chat-item {
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 1.5px solid #f1f1f1;
+        }
+
+        .chat-item:last-child { border-bottom: none; }
+
+        .speaker {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px 30px 30px 0;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-transform: capitalize;
+        }
+
+        .staff { background: linear-gradient(135deg, #ff85a2, #ff6b81); }
+        .patient { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+
+        .jp {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 2.8rem;
+            color: #1a1a1a;
+            margin: 15px 0 5px 0;
+            line-height: 1.3;
+        }
+
+        .romaji {
+            font-size: 1.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .th {
+            font-size: 2.5rem;
+            color: #34495e;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        }
+
+        @media (max-width: 768px) {
+            .jp { font-size: 1.8rem; }
+            .th { font-size: 1.3rem; }
+            .main-container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html" class="active">Conversations</a>
+        <a href="vocab.html">Vocabulary</a>
+        <a href="test.html">Test</a>
+        <a href="review.html">Review</a>
+    </nav>
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+<main class="main-container">
+    <h1 class="category-title">หมวดการแนะนำสิ่งอำนวยความสะดวก</h1>
+
+    <h2 class="sub-category">การแนะนำล็อกเกอร์</h2>
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">荷物を入れたら、好きな番号を設定してください。そして、ツマミを左側に回してください。その後スライドしてください。</p>
+            <p class="romaji">(Nimotsu o iretara, sukina bangō o settei shite kudasai. Soshite, tsumami o hidari ni mawashite kara, suraido shite kudasai.)</p>
+            <p class="th">ถ้าใส่ของแล้ว ตั้งเลขที่ชอบและเลื่อนตัวเลขนะคะ</p>
+            <audio controls><source src="audio/02.01a.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">着替えは必要ですか?</p>
+            <p class="romaji">(Kigae wa hitsuyō desu ka.)</p>
+            <audio controls><source src="audio/02.02b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">服を着替えますか?</p>
+            <p class="romaji">(Fuku o kigaemasu ka.)</p>
+            <audio controls><source src="audio/02.03b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">着替えは必要ですか?</p>
+            <p class="romaji">(Kigae wa hitsuyō desu ka.)</p>
+            <p class="th">ต้องเปลี่ยนเสื้อผ้าไหม</p>
+            <audio controls><source src="audio/02.04b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">まだお着替えではありません、お荷物をお預かりするだけです。</p>
+            <p class="romaji">(Mada okigae wa hitsuyō arimasen. Onimotsu o o-azukari suru dake desu.)</p>
+            <p class="th">ตอนนี้ยังไม่ต้องเปลี่ยนเสื้อผ้าค่ะ แค่ฝากของเท่านั้นค่ะ</p>
+            <audio controls><source src="audio/02.05a.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+
+    
+        
+  
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">携帯電話は持って行ってもいいですか</p>
+            <p class="romaji">(Keitai denwa wa motte itte mo ii desu ka.)</p>
+            <audio controls><source src="audio/02.06b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">携帯は持って行ってもいいですか</p>
+            <p class="romaji">(Keitai wa motte itte mo ii desu ka.)</p>
+            <p class="th">โทรศัพท์เอาไปด้วยได้ไหม</p>
+            <audio controls><source src="audio/02.07b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+  <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">携帯電でしたら、大丈夫です。お持ちになってもいいですよ。
+
+</p>
+            <p class="romaji">(Keitai denwa deshitara, daijōbu desu. O-mochi ni natte mo ii desu yo.)</p>
+            
+            <audio controls><source src="audio/02.08a.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">携帯電話でしたら、大丈夫です。
+
+</p>
+            <p class="romaji">(Keitai denwa deshitara, daijōbu desu.)
+
+</p>
+<p class="th">ถ้าเป็นโทรศัพท์ ไม่เป็นไรนะคะ เอาไปได้ค่ะ</p>
+            
+            <audio controls><source src="audio/02.09a.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+
+
+
+
+<h2 class="sub-category">กรณีลืมรหัสล็อกเกอร์</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">あの…ロッカーが開けられなくて…
+
+</p>
+            <p class="romaji">(Ano… rokkā ga akerarenakute…)</p>
+            <audio controls><source src="audio/01.10a.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">あの…ロッカーが開けられないんですが…</p>
+            <p class="romaji">(Ano… rokkā ga akerarenai n desu ga…)</p>
+            
+            <audio controls><source src="audio/02.11b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">すみません、ロッカーの暗証番号を忘れしまいました。
+
+</p>
+            <p class="romaji">(Sumimasen, rokkā no anshō bangō o wasurete shimaimashita.)</p>
+            <p class="th">ขอโทษนะครับ ผมลืมรหัสล็อกเกอร์ครับ</p>
+            <audio controls><source src="audio/02.12b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+
+  <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">ロッカーをお取り変えいたいしいましょうか
+
+
+</p>
+            <p class="romaji">(Rokkā o o-torikae itashimashō ka.)</p>
+            
+            <audio controls><source src="audio/02.14a.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">ロッカーを変えますか
+
+
+</p>
+            <p class="romaji">(Rokkā o kaemasu ka.)
+
+
+</p>
+<p class="th">ต้องการเปลี่ยนล็อกเกอร์ไหมคะ</p>
+            
+            <audio controls><source src="audio/02.15a.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

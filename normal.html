@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&family=Noto+Sans+Thai:wght@100..900&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --pink-staff: #ff85a2;
+            --green-patient: #2ecc71;
+            --blue-accent: #3498db;
+            --gold-special: #f1c40f;
+            --bg-light: #f0f4f8;
+        }
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1.category-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #c9cffd;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2.sub-category {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 50px 0 25px 0;
+            padding-left: 20px;
+            border-left: 10px solid var(--blue-accent);
+            letter-spacing: 1px;
+        }
+
+        .conversation-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .chat-item {
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 1.5px solid #f1f1f1;
+        }
+
+        .chat-item:last-child { border-bottom: none; }
+
+        .speaker {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px 30px 30px 0;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-transform: capitalize;
+        }
+
+        .staff { background: linear-gradient(135deg, #ff85a2, #ff6b81); }
+        .patient { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+
+        .jp {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 2.8rem;
+            color: #1a1a1a;
+            margin: 15px 0 5px 0;
+            line-height: 1.3;
+        }
+
+        .romaji {
+            font-size: 1.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .th {
+            font-size: 2.5rem;
+            color: #34495e;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        }
+
+        @media (max-width: 768px) {
+            .jp { font-size: 1.8rem; }
+            .th { font-size: 1.3rem; }
+            .main-container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html" class="active">Conversations</a>
+        <a href="vocab.html">Vocabulary</a>
+        <a href="test.html">Test</a>
+        <a href="review.html">Review</a>
+    </nav>
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+<main class="main-container">
+    <h1 class="category-title">หมวดคำถามทั่วไป</h1>
+
+    
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">健康診断ですか
+
+</p>
+            <p class="romaji">(Kenkō shindan desu ka.)
+</p>
+            <p class="th">มาตรวจสุขภาพหรือเปล่าคะ</p>
+            <audio controls><source src="audio/03.01a.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">診察に来ました。
+
+</p>
+            <p class="romaji">(Shinsatsu ni kimashita.)</p>
+<p class="th">เปล่าครับ มาตรวจร่างกาย  (OPD)</p>
+            <audio controls><source src="audio/03.02b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">今日は健診じゃなくて、診察の方です。
+
+</p>
+            <p class="romaji">(Kyō wa kenshin ja nakute, shinsatsu no hō desu.)</p>
+           <p class="th">วันนี้ไม่ได้มาตรวจสุขภาพครับ แต่มาตรวจรักษา (หาหมอ) ครับ</p> 
+            <audio controls><source src="audio/03.03b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">内科へお願いいたします。右側にございます。
+
+</p>
+            <p class="romaji">(Naika e onegai itashimasu. Migigawa ni gozaimasu.)
+</p>
+            <p class="th">รบกวนไปที่แผนกอายุรกรรม อยู่ทางขวามือนะคะ</p>
+            <audio controls><source src="audio/03.04a.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+    </div>
+
+
+
+     <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">今、水を飲んでもいいですか
+
+</p>
+            <p class="romaji">(Ima, mizu o nonde mo ii desu ka.)
+</p>
+            <audio controls><source src="audio/03.05b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">今、水を飲んでいいですか
+
+</p>
+            <p class="romaji">(Ima, mizu o nonde ii desu ka.)
+</p>
+           <p class="th">ตอนนี้ผมดื่มน้ำได้ไหมครับ</p> 
+            <audio controls><source src="audio/03.06b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">確認いたしますので、少々お待ちください。
+</p>
+            <p class="romaji">(Kakunin itashimasu node, shōshō omachi kudasai.)
+</p>
+            <p class="th">เดี๋ยวจะตรวจสอบให้นะคะ กรุณารอสักครู่ค่ะ</p>
+            <audio controls><source src="audio/03.08an.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+    </div>
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">便はどこに出せばいいですか
+
+</p>
+            <p class="romaji">(Ben wa doko ni daseba ii desu ka.)
+</p>
+            <audio controls><source src="audio/03.09b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">便はどちらにどこに出せばいいですか
+
+</p>
+            <p class="romaji">(Ben wa dochira ni daseba yoroshii desu ka.)
+</p>
+           <p class="th">อุจจาระเอาไว้ตรงไหนครับ</p> 
+            <audio controls><source src="audio/03.10b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">トイレの前、または受付の前に置いていただいても大丈夫です。
+
+</p>
+            <p class="romaji">(Toire no mae, mata wa uketsuke no mae ni oite itadaite mo daijōbu desu.)
+</p>
+            <p class="th">วางไว้ที่หน้าห้องน้ำ หรือหน้าเคาน์เตอร์ก็ได้ค่ะ</p>
+            <audio controls><source src="audio/03.11a.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+    </div>
+
+
+    
+
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">今、尿意がとても強いです。
+</p>
+            <p class="romaji">(Ima, nyōi ga totemo tsuyoi desu.)
+</p>
+            <audio controls><source src="audio/03.12b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">今、とてもといれにいきたいです。
+
+</p>
+            <p class="romaji">(Ima, totemo toire ni ikitai desu.)
+</p>
+            <audio controls><source src="audio/03.13b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+           <div class="speaker patient">Patient</div>
+            <p class="jp">今、かなり尿意があった、トイレに行きたいです。
+
+</p>
+            <p class="romaji">(Ima, kanari nyōi ga atte, toire ni ikitai desu.)
+
+            <p class="th">ตอนนี้ผมปวดปัสสาวะมากเลยครับ</p>
+            <audio controls><source src="audio/03.14b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+    </div>
+
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">相談窓口にこちらへ来るように言われました。
+
+</p>
+            <p class="romaji">(Sōdan madoguchi ni kochira e kuru yō ni iwaremashita.)
+</p>
+            <audio controls><source src="audio/03.15b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+
+        <div class="chat-item">
+           <div class="speaker patient">Patient</div>
+            <p class="jp">あちらのそうだん窓口で、ここに来るように言われました。
+
+</p>
+            <p class="romaji">(Achira no sōdan madoguchi de, koko ni kuru yō ni iwaremashita.)
+
+            <p class="th">ทางแผนกที่ปรึกษาบอกให้ผมมาที่นี่ครับ</p>
+            <audio controls><source src="audio/03.16b.mp3" type="audio/mpeg"></audio>
+        </div>
+
+       
+    </div>

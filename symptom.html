@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&family=Noto+Sans+Thai:wght@100..900&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --pink-staff: #ff85a2;
+            --green-patient: #2ecc71;
+            --blue-accent: #3498db;
+            --gold-special: #f1c40f;
+            --bg-light: #f0f4f8;
+        }
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1.category-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #c9cffd;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2.sub-category {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 50px 0 25px 0;
+            padding-left: 20px;
+            border-left: 10px solid var(--blue-accent);
+            letter-spacing: 1px;
+        }
+
+        .conversation-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .chat-item {
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 1.5px solid #f1f1f1;
+        }
+
+        .chat-item:last-child { border-bottom: none; }
+
+        .speaker {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px 30px 30px 0;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-transform: capitalize;
+        }
+
+        .staff { background: linear-gradient(135deg, #ff85a2, #ff6b81); }
+        .patient { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+
+        .jp {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 2.8rem;
+            color: #1a1a1a;
+            margin: 15px 0 5px 0;
+            line-height: 1.3;
+        }
+
+        .romaji {
+            font-size: 1.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .th {
+            font-size: 2.5rem;
+            color: #34495e;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        }
+
+        @media (max-width: 768px) {
+            .jp { font-size: 1.8rem; }
+            .th { font-size: 1.3rem; }
+            .main-container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html" class="active">Conversations</a>
+        <a href="vocab.html">Vocabulary</a>
+        <a href="test.html">Test</a>
+        <a href="review.html">Review</a>
+    </nav>
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+
+
+
+<main class="main-container">
+    <h1 class="category-title">หมวดอาการ</h1>
+
+   
+
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker staff">Staff</div>
+            <p class="jp">どうされましたか
+
+</p>
+            <p class="romaji">(dōsaremashitaka.)
+</p>
+            <p class="th">เป็นอะไรมาคะ</p>
+            <audio controls><source src="sick audio/9.00.mp3" type="audio/mpeg"></audio>
+        </div>
+
+  </div>
+            
+
+    
+
+   
+
+    
+
+    <h2 class="sub-category">อายุรกรรม</h2>
+   
+
+       <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">風邪で、鼻水があります。</p>
+            <p class="romaji">(Kaze de, hanamizu ga arimasu.)</p>
+            <p class="th">เป็นหวัด แล้วก็มีน้ำมูก</p>
+            <audio controls><source src="sick audio/9.01.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">咳、目やに、耳詰まりがあります。</p>
+            <p class="romaji">(Seki meyani mimitsumari ga arimasu.)</p>
+            <p class="th">ไอ ขี้ตา หูอื้อ</p>
+            <audio controls><source src="sick audio/9.19.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+    </div> <h2 class="sub-category">ผิวหนัง</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">にきびのことで受診したのですが、足首の痛みもあります。足首の痛みは、動かしたときに強く感じます。</p>
+            <p class="romaji">(Nikibi no koto de jushin shita no desu ga, ashikubi no itami mo arimasu. Ashikubi no itami wa, ugokashita toki ni tsuyoku kanjimasu.)</p>
+            <p class="th">มาพบแพทย์เรื่องสิว แต่มีอาการปวดข้อเท้าด้วย อาการปวดข้อเท้าจะรู้สึกมากขึ้นตอนขยับ</p>
+            <audio controls><source src="sick audio/9.22.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">かゆみがあって、顔が赤くなっています。腕に発疹もあります。</p>
+            <p class="romaji">(Kayumi ga atte, kao ga akaku natte imasu. Ude ni hasshin mo arimasu.)</p>
+            <p class="th">รู้สึกคันค่ะ หน้าแดง แล้วก็มีผื่นขึ้นที่แขน</p>
+            <audio controls><source src="sick audio/9.23.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">おへその周りに赤い発疹があります。</p>
+            <p class="romaji">(Oheso no mawari ni akai hosshin ga arimasu.)</p>
+            <p class="th">มีผื่นแดงแถวสะดือ</p>
+            <audio controls><source src="sick audio/9.24.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">胸のあたりに発疹があります。</p>
+            <p class="romaji">(Mune no atari ni hosshin ga arimasu.)</p>
+            <p class="th">ผื่นบริเวณหน้าอก</p>
+            <audio controls><source src="sick audio/9.25.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">左頬にいぼがあります。</p>
+            <p class="romaji">(Hidari hoo ni ibo ga arimasu.)</p>
+            <p class="th">มีหูดที่แก้มซ้าย</p>
+            <audio controls><source src="sick audio/9.26.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足に小さいいぼがあります。</p>
+            <p class="romaji">(Ashi ni chiisai ibo ga arimasu.)</p>
+            <p class="th">หูดที่เท้า</p>
+            <audio controls><source src="sick audio/9.27.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">顔全体に発疹があります。</p>
+            <p class="romaji">Kao zentai ni hosshin ga arimasu.</p>
+            <p class="th">ผื่นทั่วหน้า</p>
+            <audio controls><source src="sick audio/9.28.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">腕が痛く目の周りに発疹があります。</p>
+            <p class="romaji">Ude ga itaku me no mawari ni hosshin ga arimasu.</p>
+            <p class="th">ปวดแขน ผื่นรอบตา</p>
+            <audio controls><source src="sick audio/9.29.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足がかゆく鼻水があります。</p>
+            <p class="romaji">Ashi ga kayuku hanamizu ga arimasu.</p>
+            <p class="th">คันเท้า มีน้ำมูก</p>
+            <audio controls><source src="sick audio/9.30.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">全身に発疹があります。</p>
+            <p class="romaji">Zenshin ni hosshin ga arimasu.</p>
+            <p class="th">ผื่นทั้งตัว</p>
+            <audio controls><source src="sick audio/9.31.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">腕に痛いぶつぶつがあります。</p>
+            <p class="romaji">Ude ni itai butsubutsu ga arimasu.</p>
+            <p class="th">ตุ่มที่แขน</p>
+            <audio controls><source src="sick audio/9.32.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">水虫があります。</p>
+            <p class="romaji">(Mizumushi ga arimasu.)</p>
+            <p class="th">น้ำกัดเท้า</p>
+            <audio controls><source src="sick audio/9.33.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足の爪の色が変わりました。</p>
+            <p class="romaji">(Ashi no tsume no iro ga kawarimashita.)</p>
+            <p class="th">สีเล็บเท้าเปลี่ยน</p>
+            <audio controls><source src="sick audio/9.34.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">かかとがひび割れています。</p>
+            <p class="romaji">(Kakato ga hibiwareteimasu.)</p>
+            <p class="th">เท้าแตก</p>
+            <audio controls><source src="sick audio/9.35.mp3" type="audio/mpeg"></audio>
+
+
+
+
+
+
+        </div>
+    </div> <h2 class="sub-category">ศัลยกรรมกระดูก</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">子どもの指が、しばらく腫れています。</p>
+            <p class="romaji">(Kodomo no yubi ga, shibaraku harete imasu.)</p>
+            <p class="th">นิ้วของน้องบวมมาหลายวันแล้ว</p>
+            <audio controls><source src="sick audio/9.36.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">かかとの痛みが、2か月ほど続いています。</p>
+            <p class="romaji">(Kakato no itami ga, nikagetsu hodo tsuzuite imasu.)</p>
+            <p class="th">ปวดส้นเท้ามาได้ประมาณสองเดือนแล้ว</p>
+            <audio controls><source src="sick audio/9.37.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">頭をぶつけて昨日から腫れています。</p>
+            <p class="romaji">(Atama o butsukete kinou kara hareteimasu.)</p>
+            <p class="th">หัวชน บวมตั้งแต่เมื่อวาน</p>
+            <audio controls><source src="sick audio/9.38.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">指が腫れています。</p>
+            <p class="romaji">(Yubi ga hareteimasu.)</p>
+            <p class="th">นิ้วบวม</p>
+            <audio controls><source src="sick audio/9.39.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">指が腫れていて、リウマチか心配です。</p>
+            <p class="romaji">(Yubi ga harete ite riumachi ka shinpai desu.)</p>
+            <p class="th">นิ้วบวม กังวลรูมาตอยด์</p>
+            <audio controls><source src="sick audio/9.40.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">指がドアに挟まれて腫れてあざがあります。</p>
+            <p class="romaji">(Yubi ga doa ni hasamarete harete aza ga arimasu.)</p>
+            <p class="th">นิ้วบวมช้ำจากประตูหนีบ</p>
+            <audio controls><source src="sick audio/9.41.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">転倒して胸を打ち、肋骨が痛いです。</p>
+            <p class="romaji">(Tentou shite mune o uchi rokkotsu ga itai desu.)</p>
+            <p class="th">ล้ม กระแทกอก เจ็บซี่โครง</p>
+            <audio controls><source src="sick audio/9.42.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足の指をぶつけて捻挫しました。</p>
+            <p class="romaji">(Ashi no yubi o butsukete nenza shimashita.)</p>
+            <p class="th">นิ้วเท้าซ้น</p>
+            <audio controls><source src="sick audio/9.43.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">腰が痛いです。</p>
+            <p class="romaji">(Koshi ga itai desu.)</p>
+            <p class="th">ปวดหลัง</p>
+            <audio controls><source src="sick audio/9.45.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">手が腫れ肩が痛く後ろに手を回せません。</p>
+            <p class="romaji">(Te ga hare kata ga itaku ushiro ni te o mawase masen.)</p>
+            <p class="th">มือบวม ไหล่ปวด</p>
+            <audio controls><source src="sick audio/9.46.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">脇腹が腫れて痛いです。</p>
+            <p class="romaji">(Wakibara ga harete itai desu.)</p>
+            <p class="th">สีข้างบวม</p>
+            <audio controls><source src="sick audio/9.47.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">転倒して擦り傷があります。</p>
+            <p class="romaji">(Tentou shite surikizu ga arimasu.)</p>
+            <p class="th">ล้ม แผลถลอก</p>
+            <audio controls><source src="sick audio/9.48.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足首が痛いです。</p>
+            <p class="romaji">(Ashikubi ga itai desu.)</p>
+            <p class="th">เจ็บข้อเท้า</p>
+            <audio controls><source src="sick audio/9.49.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足首痛と踵のしびれがあります。</p>
+            <p class="romaji">(Ashikubi tsuu to kakato no shibire ga arimasu.)</p>
+            <p class="th">ปวดข้อเท้า ชาส้นเท้า</p>
+            <audio controls><source src="sick audio/9.50.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">肘に水が溜まっています。</p>
+            <p class="romaji">(Hiji ni mizu ga tamatteimasu.)</p>
+            <p class="th">ศอกมีถุงน้ำ</p>
+            <audio controls><source src="sick audio/9.51.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">足首の腱が炎症しています。</p>
+            <p class="romaji">( Ashikubi no ken ga enshou shiteimasu. )</p>
+            <p class="th">เอ็นข้อเท้าอักเสบ</p>
+            <audio controls><source src="sick audio/9.51.1.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">関節痛があります。 </p>
+            <p class="romaji">(Kansetsu tsuu ga arimasu. )</p>
+            <p class="th">ปวดตามข้อ</p>
+            <audio controls><source src="sick audio/9.51.2.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+ <h2 class="sub-category">หู คอ จมูก</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">鼻血が出て、鼻の中にしこりのようなものがあります。</p>
+            <p class="romaji">(Hanaji ga dete, hana no naka ni shikori no youna mono ga arimasu.)</p>
+            <p class="th">มีเลือดกำเดาไหล และเหมือนมีก้อนในจมูก</p>
+            <audio controls><source src="sick audio/9.52.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">耳が痛いです。</p>
+            <p class="romaji">(Mimi ga itai desu.)</p>
+            <p class="th">ปวดหู</p>
+            <audio controls><source src="sick audio/9.53.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">耳が詰まった感じがします。</p>
+            <p class="romaji">(Mimi ga tsumatta kanji ga shimasu.)</p>
+            <p class="th">หูอื้อ</p>
+            <audio controls><source src="sick audio/9.54.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">右耳が聞こえにくいです。</p>
+            <p class="romaji">(Migi mimi ga kikoe nikui desu.)</p>
+            <p class="th">หูขวาได้ยินไม่ดี</p>
+            <audio controls><source src="sick audio/9.55.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">左耳が聞こえにくくふらつきます。</p>
+            <p class="romaji">(Hidari mimi ga kikoe nikuku furatsukimasu.)</p>
+            <p class="th">หูซ้ายไม่ได้ยิน เวียน</p>
+            <audio controls><source src="sick audio/9.56.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">耳の中でカサカサ音がします。</p>
+            <p class="romaji">(Mimi no naka de kasakasa oto ga shimasu.)</p>
+            <p class="th">มีเสียงในหู</p>
+            <audio controls><source src="sick audio/9.57.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">副鼻腔炎です。</p>
+            <p class="romaji">(Fukubikuūen desu)</p>
+            <p class="th">เป็นไซนัสอักเสบ</p>
+            <audio controls><source src="sick audio/9.58.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">口の中にしこりがあります。</p>
+            <p class="romaji">(Kuchi no naka ni shikori ga arimasu.)</p>
+            <p class="th">มีก้อนในปาก</p>
+            <audio controls><source src="sick audio/9.58.1.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">突然舌が腫れました。 </p>
+            <p class="romaji">(Totsuzen shita ga haremashita. )</p>
+            <p class="th">ลิ้นบวม</p>
+            <audio controls><source src="sick audio/9.58.2.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">辛い物で口がしびれます。  </p>
+            <p class="romaji">(Karai mono de kuchi ga shibiremasu.  )</p>
+            <p class="th">กินเผ็ดแล้วปากชา</p>
+            <audio controls><source src="sick audio/9.58.3.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+
+    <h2 class="sub-category">ตา</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">光がちらついて見えます。</p>
+            <p class="romaji">(Hikari ga chiratsuite miemasu.)</p>
+            <p class="th">เห็นแสงแวบๆ</p>
+            <audio controls><source src="sick audio/9.59.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">まぶたが腫れてものもらいです。</p>
+            <p class="romaji">(Mabuta ga harete monomorai desu.)</p>
+            <p class="th">ตากุ้งยิง</p>
+            <audio controls><source src="sick audio/9.60.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">コンタクトレンズが目に残っています。</p>
+            <p class="romaji">(Kontakuto renzu ga me ni nokotteimasu.)</p>
+            <p class="th">คอนแทคเลนส์ค้างในตา</p>
+            <audio controls><source src="sick audio/9.61.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">目が赤くて、痛みがあります。</p>
+            <p class="romaji">(Me ga akakute, itami ga arimasu.)</p>
+            <p class="th">ตาแดงและมีอาการปวด</p>
+            <audio controls><source src="sick audio/9.62.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">目がかゆいです。</p>
+            <p class="romaji">(Me ga kayui desu.)</p>
+            <p class="th">คันตา</p>
+            <audio controls><source src="sick audio/9.63.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">目やにがたくさん出ていて、子どもからうつったかもしれません。</p>
+            <p class="romaji">(Me yāni ga takusan dete ite, kodomo kara utsutta kamo shiremasen.)</p>
+            <p class="th">มีขี้ตาเยอะ และคิดว่าอาจติดมาจากลูก</p>
+            <audio controls><source src="sick audio/9.64.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+    <h2 class="sub-category">สูตินรีเวช</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">生理が1か月来ていません。検査の料金も知りたいです。</p>
+            <p class="romaji">(Seiri ga ikkagetsu kiteimasen. Kensa no ryoukin mo shiritai desu.)</p>
+            <p class="th">ประจำเดือนไม่มา 1 เดือน และอยากทราบราคาการตรวจด้วยค่ะ</p>
+            <audio controls><source src="sick audio/9.65.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">生理不順で薬について相談したいです。</p>
+            <p class="romaji">(Seiri fujun de kusuri ni tsuite soudan shitai desu.)</p>
+            <p class="th">ประจำเดือนมาไม่ปกติ อยากปรึกษาเรื่องยาค่ะ</p>
+            <audio controls><source src="sick audio/9.66.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">歩いたり座ったりすると陰部が痛いです。</p>
+            <p class="romaji">(Aruitari suwaritari suru to inbu ga itai desu.)</p>
+            <p class="th">เวลาเดินหรือนั่งจะรู้สึกปวดบริเวณอวัยวะเพศค่ะ</p>
+            <audio controls><source src="sick audio/9.67.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">陰部にしこりを触れます。</p>
+            <p class="romaji">(Inbu ni shikori o furemasu.)</p>
+            <p class="th">คลำพบก้อนบริเวณอวัยวะเพศค่ะ</p>
+            <audio controls><source src="sick audio/9.68.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">おりものが多くかゆいです。</p>
+            <p class="romaji">(Orimono ga ooku kayui desu.)</p>
+            <p class="th">ตกขาวเยอะและมีอาการคันค่ะ</p>
+            <audio controls><source src="sick audio/9.69.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+    <h2 class="sub-category">ระบบทางเดินอาหาร</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">腹痛と胸やけがあります。</p>
+            <p class="romaji">(Fukutsuu to muneyake ga arimasu.)</p>
+            <p class="th">ปวดท้องและแสบร้อนกลางอก</p>
+            <audio controls><source src="sick audio/9.70.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">便に血が混じっています。</p>
+            <p class="romaji">(Ben ni chi ga majitteimasu.)</p>
+            <p class="th">ถ่ายมีเลือดปน (ถ่ายเป็นเลือด)</p>
+            <audio controls><source src="sick audio/9.71.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">大腸カメラの日に痔の手術も相談したいです。</p>
+            <p class="romaji">(Daichou kamera no hi ni ji no shujutsu mo soudan shitai desu.)</p>
+            <p class="th">อยากปรึกษาเรื่องผ่าตัดริดสีดวงในวันที่ส่องกล้องลำไส้ใหญ่</p>
+            <audio controls><source src="sick audio/9.72.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">逆流性食道炎について相談したいです。</p>
+            <p class="romaji">(Gyakuryuusei shokudouen ni tsuite soudan shitai desu.)</p>
+            <p class="th">อยากปรึกษาเรื่องโรคกรดไหลย้อน</p>
+            <audio controls><source src="sick audio/9.73.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">下腹部痛と吐き気があり医師指定したいです。</p>
+            <p class="romaji">(Kahukubu tsuu to hakike ga ari ishi shitei shitai desu.)</p>
+            <p class="th">ปวดท้องน้อยและคลื่นไส้ อยากจะระบุตัวแพทย์ที่ตรวจ</p>
+            <audio controls><source src="sick audio/9.74.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">お腹が痛いですが、便が出ません。</p>
+            <p class="romaji">(Onaka ga itai desu ga, ben ga demasen.)</p>
+            <p class="th">ปวดท้องแต่ถ่ายไม่ออก</p>
+            <audio controls><source src="sick audio/9.75.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">肝機能の数値が高く、日本の検査結果について相談したいです。</p>
+            <p class="romaji">(Kankinou no suuchi ga takaku, Nihon no kensa kekka ni tsuite soudan shitai desu.)</p>
+            <p class="th">มีค่าตับสูง อยากขอปรึกษาเกี่ยวกับผลการตรวจจากประเทศญี่ปุ่น</p>
+            <audio controls><source src="sick audio/9.75.1.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">みぞおちが痛いです。 </p>
+            <p class="romaji">(Mizo-ochi ga itai desu. )</p>
+            <p class="th">เจ็บลิ้นปี่</p>
+            <audio controls><source src="sick audio/9.75.2.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+    <h2 class="sub-category">ระบบทางเดินปัสสาวะ</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">排尿時痛と膿があります。</p>
+            <p class="romaji">(Hainyouji tsuu to nou ga arimasu.)</p>
+            <p class="th">เจ็บตอนปัสสาวะและมีหนองปนออกมา</p>
+            <audio controls><source src="sick audio/9.76.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">尿が茶色で、異物のようなものが混じっています。</p>
+            <p class="romaji">(Nyou ga chairo de ibutsu no youna mono ga majitteimasu.)</p>
+            <p class="th">ปัสสาวะสีน้ำตาลและมีเศษเหมือนสิ่งแปลกปลอมปนอยู่</p>
+            <audio controls><source src="sick audio/9.77.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">尿が出ず高熱があります。</p>
+            <p class="romaji">(Nyou ga dezu kou netsu ga arimasu.)</p>
+            <p class="th">ปัสสาวะไม่ออกและมีไข้สูง</p>
+            <audio controls><source src="sick audio/9.78.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+<h2 class="sub-category">ทันตกรรม / ช่องปาก</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">転んで歯をぶつけました。</p>
+            <p class="romaji">(Koronde ha o butsukemashita.)</p>
+            <p class="th">ล้มฟันกระแทก</p>
+            <audio controls><source src="sick audio/9.79.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">歯が痛くて、虫歯だと思います。</p>
+            <p class="romaji">(Ha ga itakute, mushiba da to omoimasu.)</p>
+            <p class="th">ปวดฟัน คิดว่าน่าจะฟันผุ</p>
+            <audio controls><source src="sick audio/9.80.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">歯ぐきが腫れています。</p>
+            <p class="romaji">(Haguki ga harete imasu.)</p>
+            <p class="th">เหงือกบวม</p>
+            <audio controls><source src="sick audio/9.81.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">口の中に痛いできものがあります。</p>
+            <p class="romaji">(Kuchi no naka ni itai dekimono ga arimasu.)</p>
+            <p class="th">มีแผล (หรือตุ่ม) ที่เจ็บในปาก</p>
+            <audio controls><source src="sick audio/9.82.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+    <h2 class="sub-category">หัวใจและระบบทางเดินหายใจ</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">胸が締め付けられるように痛いです。</p>
+            <p class="romaji">(Mune ga shimetsukerareru you ni itai desu.)</p>
+            <p class="th">เจ็บหน้าอกเหมือนถูกบีบเค้น</p>
+            <audio controls><source src="sick audio/9.83.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">動悸と胸の痛みがあります。</p>
+            <p class="romaji">(Douki to mune no itami ga arimasu.)</p>
+            <p class="th">มีอาการใจสั่นและเจ็บหน้าอก</p>
+            <audio controls><source src="sick audio/9.84.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">心臓がドキドキします。</p>
+            <p class="romaji">(Shinzō ga dokidoki shimasu.)</p>
+            <p class="th">หัวใจเต้นแรง (ใจเต้นตึกตัก) </p>
+            <audio controls><source src="sick audio/9.85.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">息が吸いにくいです。</p>
+            <p class="romaji">(Iki ga suinikui desu.)</p>
+            <p class="th">หายใจไม่อิ่ม หรือหายใจได้ไม่เต็มที่</p>
+            <audio controls><source src="sick audio/9.86.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+
+
+
+
+    <h2 class="sub-category">ศัลยกรรมทั่วไป</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">犬に噛まれましたが傷はありません。狂犬病が心配です。</p>
+            <p class="romaji">(Inu ni kamaremashita ga kizu wa arimasen. Kyoukenbyou ga shinpai desu.)</p>
+            <p class="th">โดนหมากัดแต่ไม่มีแผลค่ะ กังวลเรื่องโรคพิษสุนัขบ้า</p>
+            <audio controls><source src="sick audio/9.87.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">猫に引っかかれました。</p>
+            <p class="romaji">(Neko ni hikkakaremashita.)</p>
+            <p class="th">โดนแมวข่วน</p>
+            <audio controls><source src="sick audio/9.88.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">走っていて転び、ひざにすり傷があります。</p>
+            <p class="romaji">(Hashitte ite korobi, hiza ni surikizu ga arimasu.)</p>
+            <p class="th">วิ่งแล้วล้ม เข่ามีแผลถลอก</p>
+            <audio controls><source src="sick audio/9.89.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">陥入爪かもしれません。</p>
+            <p class="romaji">(Kannyūsō kamo shiremasen.)</p>
+            <p class="th">อาจจะเป็นเล็บขบ</p>
+            <audio controls><source src="sick audio/9.90.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+
+
+    <h2 class="sub-category">ปรึกษาทั่วไปและวัคซีน</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">子供の水ぼうそうワクチン相談したいです。</p>
+            <p class="romaji">(Kodomo no mizubousou wakuchin soudan shitai desu.)</p>
+            <p class="th">อยากปรึกษาเรื่องวัคซีนอีสุกอีใสให้ลูก</p>
+            <audio controls><source src="sick audio/9.91.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">体重について相談したいです。</p>
+            <p class="romaji">(Taijuu ni tsuite soudan shitai desu.)</p>
+            <p class="th">อยากปรึกษาเรื่องน้ำหนักตัว</p>
+            <audio controls><source src="sick audio/9.92.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">いつもの薬をもらい追加検査が必要か聞きたいです。</p>
+            <p class="romaji">(Itsumo no kusuri o morai tsuika kensa ga hitsuyou ka kikitai desu.)</p>
+            <p class="th">มารับยาเดิมที่กินประจำ และอยากถามว่าจำเป็นต้องตรวจอะไรเพิ่มเติมไหม</p>
+            <audio controls><source src="sick audio/9.93.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div>
+
+
+
+    <h2 class="sub-category">อาการกำเริบและการตรวจเฉพาะทาง</h2>
+    <div class="conversation-card">
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">症状が再発しました。以前肺のレントゲンを撮りました。</p>
+            <p class="romaji">(Shoujou ga saihatsu shimashita. Izen hai no rentogen o torimashita.)</p>
+            <p class="th">อาการกลับมาเป็นอีกแล้ว ก่อนหน้านี้เคยเอกซเรย์ปอดไปแล้ว</p>
+            <audio controls><source src="sick audio/9.94.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">痛風 ga saihatsu shimashita。</p>
+            <p class="romaji">(Tsuufuu ga saihatsu shimashita.)</p>
+            <p class="th">โรคเกาต์กำเริบ</p>
+            <audio controls><source src="sick audio/9.95.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="chat-item">
+            <div class="speaker patient">Patient</div>
+            <p class="jp">性感染症の検査をしたいです。</p>
+            <p class="romaji">(Seikansenshou no kensa o shitai desu.)</p>
+            <p class="th">อยากตรวจโรคติดต่อทางเพศสัมพันธ์</p>
+            <audio controls><source src="sick audio/9.96.mp3" type="audio/mpeg"></audio>
+        </div>
+    </div> 
+

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - Mediko Voice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+
+
+    <title>Japanese Listening Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --text-dark: #2d3436;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .header {
+            text-align: center;
+           margin: 120px auto 40px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem; /* ขยายขนาดหัวข้อให้ใหญ่ขึ้น */
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        .question-text {
+            font-size: 2.2rem; /* ขนาดคำถามใหญ่พิเศษ */
+            font-weight: 600;
+            margin-bottom: 35px;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .audio-section {
+            margin-bottom: 40px;
+        }
+
+        .audio-btn {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 18px 45px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .audio-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            background: #fcfcfc;
+            border: 2px solid #edf2f7;
+            padding: 20px 25px;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Kanit', sans-serif;
+            color: #444;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary-color);
+            background-color: #f0f7ff;
+            padding-left: 35px; /* Effect เมื่อเลื่อนเม้าส์ไปวาง */
+        }
+
+        .correct {
+            background-color: var(--success-color) !important;
+            color: white !important;
+            border-color: var(--success-color) !important;
+        }
+
+        .wrong {
+            background-color: var(--danger-color) !important;
+            color: white !important;
+            border-color: var(--danger-color) !important;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--success-color);
+            margin: 40px 0;
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+        }
+
+        .restart-btn {
+            background: var(--text-dark);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin: 20px auto;
+            display: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .question-text { font-size: 1.6rem; }
+            .quiz-card { padding: 30px 20px; }
+        }
+    </style>
+
+
+
+</head>
+
+
+
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars" id="menu-btn"></label>
+
+    <a href="index.html" class="logo">Mediko Voice<span>.</span></a>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="conversation.html" class="active">Conversations</a>
+        <a href="vocab.html">Vocabulary</a>
+        <a href="test.html">Test</a>
+        <a href="review.html">Review</a>
+    </nav>
+
+    <div class="icons">
+        <a href="index.html" class="fas fa-house"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="header">
+        <h1>แบบทดสอบการฟัง</h1>
+        <p>คลิกที่ปุ่มลำโพงเพื่อฟังเสียงและเลือกคำตอบที่ถูกต้อง</p>
+    </div>
+
+    <div id="quiz-area"></div>
+    <div id="score-area" class="score-display"></div>
+    <button id="restart-btn" class="restart-btn" onclick="startQuiz()">เริ่มทำข้อสอบใหม่</button>
+</div>
+
+<script>
+const masterData = [
+    {id: "05.04", jp: "アルコールアレルギーがあります。", th: "ผมแพ้แอลกอฮอล์ครับ"},
+    {id: "01.15", jp: "あの…予約の変更をお願いしたいのですが。", th: "คือว่า… มาขอเปลี่ยนวันนัดครับ"},
+    {id: "01.23", jp: "検査の追加オプションをご希望です。", th: "ต้องการเพิ่ม Options ครับ"},
+    {id: "01.24", jp: "下剤を受け取りに来ました。", th: "มาเอายาระบายครับ"},
+    {id: "02.13", jp: "すみません、ロッカーの番号を忘れました。", th: "ขอโทษนะครับ ผมลืมรหัสล็อกเกอร์ครับ"},
+    {id: "03.10", jp: "便はどちらにどこに出せばいいですか", th: "อุจจาระเอาไว้ตรงไหนครับ"},
+    {id: "03.14", jp: "今、かなり尿意があった、トイレに行きたいです。", th: "ตอนนี้ผมปวดปัสสาวะมากเลยครับ"},
+    {id: "03.14 (2)", jp: "携帯は持って行ってもいいですか", th: "โทรศัพท์เอาไปด้วยได้ไหม"},
+    {id: "9.01", jp: "風邪で、鼻水があります。", th: "เป็นหวัด แล้วก็มีน้ำมูก"},
+    {id: "9.03", jp: "めまいがあって、お腹が痛くて、吐き気ก็します。", th: "รู้สึกเวียนหัว แล้วปวดท้อง มีอาการคลื่นไส้ด้วยค่ะ"},
+    {id: "9.04", jp: "昨日の朝から、咳が出て喉が痛いです。", th: "มีอาการไอกับเจ็บคอ ตั้งแต่เมื่อวานตอนเช้าครับ"},
+    {id: "9.05", jp: "鼻の中が痛く、鼻水が出て、少しだるい感じはありますが、熱はありません。", th: "เจ็บข้างในจมูก มีน้ำมูก ครั่นเนื้อครั่นตัว แต่ไม่มีไข้ค่ะ"},
+    {id: "9.06", jp: "下痢と発熱があります。嘔吐はありませんが、吐き気があります。", th: "ท้องเสียและมีไข้ ไม่อาเจียนแต่รู้สึกคลื่นไส้ค่ะ"},
+    {id: "9.07", jp: "眠れません。", th: "นอนไม่หลับ"},
+    {id: "9.08", jp: "肺炎ワクチン後、体が痛くてだるいので薬がほしいです。", th: "ฉีดวัคซีนปอดอักเสบแล้ว ปวดตัว เพลีย อยากยา"},
+    {id: "9.09", jp: "咳、くしゃみ、鼻水があります。", th: "ไอ จาม มีน้ำมูก"},
+    {id: "9.10", jp: "痰と咳が2日続き、頭痛もあるのでMRIを希望します。", th: "มีเสมหะ ไอ2วัน ปวดหัว อยาก MRI"},
+    {id: "9.11", jp: "頭痛とだるさがあります。", th: "ปวดหัว เพลีย"},
+    {id: "9.12", jp: "発熱があり、水も食事ก็取れず嘔吐しています。", th: "ไข้สูง ดื่มกินไม่ได้ อาเจียน"},
+    {id: "9.13", jp: "年初から咳が続いています。", th: "ไอตั้งแต่ต้นปี"},
+    {id: "9.16", jp: "咳と胸の圧迫感があります。", th: "ไอ แน่นหน้าอก"},
+    {id: "9.17", jp: "関節痛があります。", th: "ปวดข้อ"},
+    {id: "9.18", jp: "発熱、喉痛、鼻水があります。", th: "ไข้ เจ็บคอ น้ำมูก"},
+    {id: "9.19", jp: "咳、目やに、耳詰まりがあります。", th: "ไอ ขี้ตา หูอื้อ"},
+    {id: "9.22", jp: "にきびのことで受診したのですが、足首の痛みもあります。足首の痛みは、動かしたときに強く感じます。", th: "มาพบแพทย์เรื่องสิว แต่มีอาการปวดข้อเท้าด้วย อาการปวดข้อเท้าจะรู้สึกมากขึ้นตอนขยับ"},
+    {id: "9.23", jp: "かゆみがあって、顔が赤くなっています。腕に発疹もあります。", th: "รู้สึกคันค่ะ หน้าแดง แล้วก็มีผื่นขึ้นที่แขน"},
+    {id: "9.24", jp: "おへその周りに赤い発疹があります。", th: "มีผื่นแดงแถวสะดือ"},
+    {id: "9.25", jp: "胸のあたりに発疹があります。", th: "ผื่นบริเวณหน้าอก"},
+    {id: "9.35", jp: "かかとがひび割れています。", th: "เท้าแตก"},
+    {id: "9.36", jp: "子どもの指が、しばらく腫れています。", th: "นิ้วของน้องบวมมาหลายวันแล้ว"},
+    {id: "9.37", jp: "かかとの痛みが、2か月ほど続いています。", th: "ปวดส้นเท้ามาได้ประมาณสองเดือนแล้ว"},
+    {id: "9.38", jp: "頭をぶつけて昨日から腫れています。", th: "หัวชน บวมตั้งแต่เมื่อวาน"},
+    {id: "9.42", jp: "転倒して胸を打ち、肋骨が痛いです。", th: "ล้ม โทรศัพท์กระแทกอก เจ็บซี่โครง"},
+    {id: "9.43", jp: "足の指をぶつけて捻挫しました。", th: "นิ้วเท้าซ้น"},
+    {id: "9.50", jp: "足首痛と踵のしびれがあります。", th: "ปวดข้อเท้า ชาส้นเท้า"},
+    {id: "9.51", jp: "肘に水が溜まっています。", th: "ศอกมีถุงน้ำ"},
+    {id: "9.51.1", jp: "足首の腱が炎症しています。", th: "เอ็นข้อเท้าอักเสบ"},
+    {id: "9.53", jp: "耳ที่痛いです。", th: "ปวดหู"},
+    {id: "9.54", jp: "耳が詰まった感じがします。", th: "หูอื้อ"},
+    {id: "9.55", jp: "右耳が聞こえにくいです。", th: "หูขวาได้ยินไม่ดี"},
+    {id: "9.60", jp: "まぶたが腫れてものもらいです。", th: "ตากุ้งยิง"},
+    {id: "9.62", jp: "目が赤くて、痛みがあります。", th: "ตาแดงและมีอาการปวด"},
+    {id: "9.66", jp: "生理不順で薬について相談したいです。", th: "ประจำเดือนมาไม่ปกติ อยากปรึกษายา"},
+    {id: "9.67", jp: "歩いたり座ったりすると陰部が痛いです。", th: "ปวดอวัยวะเพศ"},
+    {id: "9.71", jp: "便に血が混じっています。", th: "ถ่ายเป็นเลือด"},
+    {id: "9.73", jp: "逆流性食道炎について相談したいです。", th: "ปรึกษากรดไหลย้อน"},
+    {id: "9.75", jp: "お腹が痛いですが、便が出ません。", th: "ปวดท้อง แต่ถ่ายไม่ออก"},
+    {id: "9.78", jp: "尿が出ず高熱があります。", th: "ปัสสาวะไม่ออก ไข้สูง"},
+    {id: "9.79", jp: "転んで歯をぶつけました。", th: "ล้ม ฟันกระแทก"},
+    {id: "9.80", jp: "歯が痛くて、虫歯だと思います。", th: "ปวดฟัน คิดว่าน่าจะฟันผุ"},
+    {id: "9.81", jp: "歯ぐきที่腫れています。", th: "เหงือกบวม"},
+    {id: "9.82", jp: "口の中に痛いできものがあります。", th: "ในปากมีแผลที่เจ็บ"},
+    {id: "9.84", jp: "動悸と胸の痛みがあります。", th: "ใจสั่น เจ็บหัวใจ"},
+    {id: "9.85", jp: "心臓がドキドキします。", th: "หัวใจเต้นแรง"},
+    {id: "9.88", jp: "猫に引っかかれました。", th: "แมวข่วน"},
+    {id: "9.89", jp: "走っていて転び、ひざにすり傷があります。", th: "วิ่งแล้วล้ม เข่ามีแผลถลอกค่ะ"},
+    {id: "9.90", jp: "子供の水ぼうそうワクチン相談したいです。", th: "ปรึกษาวัคซีนอีสุกอีใสให้ลูก"},
+    {id: "9.92", jp: "体重について相談したいです。", th: "อยากปรึกษาเรื่องน้ำหนัก"},
+    {id: "9.93", jp: "いつもの薬をもらい追加検査が必要か聞きたいです。", th: "รับยาเดิม ถามตรวจเพิ่ม"}
+];
+
+let score = 0;
+let questions = [];
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ja-JP';
+    utterance.rate = 0.85; // ปรับให้ช้าลงเล็กน้อยเพื่อให้ฟังง่าย
+    window.speechSynthesis.speak(utterance);
+}
+
+function startQuiz() {
+    score = 0;
+    document.getElementById('score-area').style.display = 'none';
+    document.getElementById('restart-btn').style.display = 'none';
+    questions = shuffle([...masterData]).slice(0, 10);
+    renderQuiz();
+    window.scrollTo(0,0);
+}
+
+function renderQuiz() {
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = '';
+
+    questions.forEach((q, idx) => {
+        const options = generateChoices(q.th);
+        const card = document.createElement('div');
+        card.className = 'quiz-card';
+        card.innerHTML = `
+            <div class="question-text">คนไข้พูดว่าอะไร?</div>
+            <div class="audio-section">
+                <button class="audio-btn" onclick="speak('${q.jp}')">
+                    <span>🔊</span> คลิกเพื่อฟังเสียง
+                </button>
+            </div>
+            <div class="options-grid" id="opt-container-${idx}">
+                ${options.map(opt => `<button class="option-btn" onclick="checkAnswer(this, '${opt}', '${q.th}', ${idx})">${opt}</button>`).join('')}
+            </div>
+        `;
+        area.appendChild(card);
+    });
+}
+
+function generateChoices(correct) {
+    let others = masterData.map(d => d.th).filter(t => t !== correct);
+    let choices = [correct];
+    shuffle(others);
+    choices.push(others[0], others[1]);
+    return shuffle(choices);
+}
+
+function checkAnswer(btn, selected, correct, idx) {
+    const container = document.getElementById(`opt-container-${idx}`);
+    const buttons = container.querySelectorAll('.option-btn');
+    
+    buttons.forEach(b => b.disabled = true);
+
+    if (selected === correct) {
+        btn.classList.add('correct');
+        score++;
+    } else {
+        btn.classList.add('wrong');
+        buttons.forEach(b => {
+            if (b.innerText === correct) b.classList.add('correct');
+        });
+    }
+
+    const answeredCount = document.querySelectorAll('.option-btn:disabled').length / 3;
+    if (answeredCount === 10) {
+        const scoreArea = document.getElementById('score-area');
+        scoreArea.innerHTML = `สรุปคะแนนของคุณ: ${score} / 10 คะแนน`;
+        scoreArea.style.display = 'block';
+        document.getElementById('restart-btn').style.display = 'block';
+    }
+}
+
+startQuiz();
+</script>
+
+</body>
+</html>
