@@ -185,33 +185,21 @@
 <section class="main-container" id="Review">
     <h1 class="category-title" style="background: #fdf2f2;">User <span>Reviews</span></h1>
 
-    <div class="conversation-card review-card-input">
+    <div class="conversation-card" style="border-top: 6px solid var(--pink-staff);">
         <h2 style="margin-top: 0; color: var(--blue-accent); font-size: 1.8rem; margin-bottom: 25px;">
-            <i class="fas fa-pen-nib"></i> เขียนรีวิวของคุณ
+            <i class="fas fa-pen-nib"></i> แบ่งปันประสบการณ์ของคุณ
         </h2>
         
-        <div class="rating-section">
-            <p style="margin-bottom: 10px; color: #7f8c8d;">ความพึงพอใจของคุณ:</p>
-            <div class="stars-input" id="star-rating">
-                <i class="far fa-star" data-value="1"></i>
-                <i class="far fa-star" data-value="2"></i>
-                <i class="far fa-star" data-value="3"></i>
-                <i class="far fa-star" data-value="4"></i>
-                <i class="far fa-star" data-value="5"></i>
-            </div>
+        <div id="cusdis_thread"
+             data-host="https://cusdis.com"
+             data-app-id="25a5e223-cdb8-4d18-bf05-2e7097f786c9"
+             data-page-id="mediko_review_page"
+             data-page-url="https://mediko-voice.vercel.app/review.html"
+             data-page-title="Mediko Voice Review">
         </div>
-
-        <div class="input-container">
-            <input type="text" id="user-nickname" placeholder="ชื่อเล่นของคุณ" class="modern-field">
-            <textarea id="user-comment" placeholder="เล่าประสบการณ์หรือความประทับใจ..." class="modern-field" rows="4"></textarea>
-        </div>
-
-        <button onclick="submitReview()" class="modern-btn">
-            ส่งรีวิว <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
-        </button>
     </div>
 
-    <div class="divider-text">รีวิวจากผู้ใช้งานล่าสุด</div>
+    <div class="divider-text">รีวิวที่ได้รับการอนุมัติแล้ว</div>
 
     <div id="reviews-display" class="reviews-list">
         <div class="conversation-card review-item-box">
@@ -222,11 +210,16 @@
                 </div>
             </div>
             <p class="th" style="font-size: 1.5rem; margin-top: 15px; color: #444;">
-                ขอบคุณที่แวะมาเยี่ยมชม Mediko Voice นะคะ สามารถร่วมแบ่งปันประสบการณ์ได้ที่นี่เลย!
+                ขอบคุณที่แวะมาเยี่ยมชม Mediko Voice นะคะ รีวิวของคุณจะปรากฏที่นี่หลังจากได้รับการตรวจสอบแล้วค่ะ!
             </p>
         </div>
     </div>
 </section>
+
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+</body>
+</html>
 
 <style>
     /* ส่วนฟอร์มรีวิว */
